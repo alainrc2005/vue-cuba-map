@@ -9,7 +9,7 @@
 import { SVG } from "@svgdotjs/svg.js";
 import { createPopper } from "@popperjs/core";
 
-const color1 = "009688";
+const color1 = "BA68C8";
 const color2 = "ffffff";
 
 export default {
@@ -43,6 +43,17 @@ export default {
     getHex(v) {
       return v.toString(16).padStart(2, "0");
     },
+    getLuminance(lum) {
+      // Best Formula Luminance Color
+      console.log(lum);
+      let rgb = "#";
+      for (let i = 0; i < 3; i++) {
+        let c = parseInt(color1.substr(i * 2, 2), 16);
+        c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16);
+        rgb += ("00" + c).substr(c.length);
+      }
+      return rgb;
+    },
     getColor(ratio) {
       if (!isFinite(ratio)) {
         return "#" + color1;
@@ -75,7 +86,8 @@ export default {
           for (const region of cuba.find("path")) {
             const rv = this.provinces[region.id()];
             if (isFinite(rv)) {
-              region.fill(this.getColor(rv / 2148132));
+              //region.fill(this.getColor(rv / 2148132));
+              region.fill(this.getLuminance(1 - rv / 2148132));
             }
             region.on("mouseover", () => {
               this.popperElement.innerText = `${region.attr("name")} : ${rv}`;
