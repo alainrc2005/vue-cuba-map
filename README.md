@@ -1,6 +1,8 @@
 # vue-map-cuba
+Proyecto demostrativo para utilizar el mapa SVG de Cuba y sus provincias con datos. Según la escala. Según los valores será la intensidad del color de relleno de la provincia.
 
-## Project setup
+El mapa fue tomado de https://simplemaps.com/resources/svg-maps donde se puede realizar una edición personalizada de los datos y atributos del mismo.
+### Project setup
 ```
 yarn install
 ```
@@ -19,6 +21,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
